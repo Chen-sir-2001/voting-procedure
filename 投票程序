@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    int i, j;
+    char a[20];
+    struct can
+    {
+        char name[20];
+        int poll;
+    }can2[3] = {
+                 {"陈忠意",0},
+                 {"刘陈超",0},
+                 {"小意哥",0},
+    };
+    printf("三位总统候选人：");
+    printf("%s,%s,%s\n",can2[0].name,can2[1].name,can2[2].name);
+    for(i = 1; i <= 10; i++){
+        printf("请%d号投票人投票\n",i);
+        scanf("%s",a);
+        for(j = 0; j < 3; j++){
+        if(strcmp(a,can2[j].name) == 0){
+           can2[j].poll = can2[j].poll + 1;
+           }
+        }
+    }
+    for(j = 0; j < 3; j++){
+        printf("\t%s:%d票\n\n\n",can2[j].name,can2[j].poll);
+    }
+    if( (can2[0].poll >= can2[1].poll) && (can2[0].poll >= can2[2].poll) ){
+        printf("新总统是: %s,他的票数是：%d",can2[0].name,can2[0].poll);
+    }else if( (can2[1].poll > can2[0].poll) && (can2[1].poll >= can2[2].poll) ){
+        printf("新总统是: %s,他的票数是：%d",can2[1].name,can2[1].poll);
+    }else if( (can2[2].poll > can2[0].poll) && (can2[2].poll > can2[1].poll) ){
+        printf("新总统是: %s,他的票数是：%d",can2[1].name,can2[1].poll);
+    }
+    return 0;
+}
